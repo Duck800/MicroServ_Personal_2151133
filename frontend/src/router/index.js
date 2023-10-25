@@ -13,6 +13,11 @@ const router = createRouter({
             name: 'search',  // 搜索界面
             component: () => import('@/views/search/index.vue'),
         },
+        {
+            path: '/info',
+            name: 'info',  // 信息界面
+            component: () => import('@/views/Info/index.vue'),
+        },
     ]
 })
 

@@ -1,48 +1,63 @@
-<script setup>
-import { reactive, ref } from 'vue';
-import axios from 'axios';
-
-// 使用ref函数创建一个响应式的数据
-const responseData = ref();
-const params = {
-   area:'南通',
-};
-
-// 在组件创建时发起API请求
-axios.get('https://route.showapi.com/9-2?showapi_appid=1475668&showapi_sign=2c780d7234d547a49d4df8a0e9331f2d', {
-  params: params
-})
-  .then(response => {
-    // 更新响应式数据
-    responseData.value = response.data;
-
-    after_weather(responseData.value);
-  })
-  .catch(error => {
-    console.error(error);
-  });
-
-
-const after_weather = (value) => {
-  console.log(value.showapi_res_body)
-}
-</script>
-
 <template>
-  
+    <div class="Info">
+        <div class = "search">
+            <search />
+        </div>
+        <div class = "weather">
+            <weather/>
+        </div>
+        <div class = "map">
+            <MapContainer />
+        </div>
+        <div class = "news">
+            <news />
+        </div>
+    </div>
+
 </template>
 
+<script setup>
+import { ref } from 'vue';
+import MapContainer from "@/components/MapContainer.vue"
+import search from '@/components/search.vue'
+import weather from '@/components/weather.vue'
+import news from '@/components/news.vue'
+
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.Info{
+    background-image: url('@/assets/InfoPage.png');
+    /* 背景图片位置 */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* 背景图片是否重复 */
+    background-size: 100% 100%;
+    position: absolute;
+    z-index: 1; /* 比根元素更高 */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.search{
+    position:fixed;
+    top:13px;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.map{
+    position:fixed;
+    top:58px;
+    left:50px;
+}
+.weather{
+    position:fixed;
+    top:79px;
+    left:680px;
+}
+.news{
+    position:fixed;
+    top:80px;
+    right:50px;
 }
 </style>
