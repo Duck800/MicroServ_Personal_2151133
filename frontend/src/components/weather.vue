@@ -7,13 +7,17 @@
         <div class = "night_weather"> {{ responseData.f1.night_weather }}</div>
         <div class = "night_temperature"> {{ responseData.f1.night_air_temperature }}°C</div>
         <div style="position:absolute;top:100px;right:30px;font-size: 30px;"> ~ </div>
+
+        <div style="position:absolute;top:83px;right:30px;">{{ responseData.f1.day_wind_direction }}
+            {{ responseData.f1.day_wind_power.split(' ')[0] }}</div>
+        <div style="position:absolute;bottom:15px;right:30px;">{{ responseData.f1.night_wind_direction }}
+            {{ responseData.f1.night_wind_power.split(' ')[0] }}</div>
     </el-card>
 </template>
  
 <script setup>
 import axios from 'axios';
 import { reactive, ref } from 'vue';
-import 'vue3-emoji/dist/style.css'
 import { useStore } from 'vuex';
 import { GetInfo } from "@/api/area.js"
 
@@ -34,11 +38,12 @@ GetInfo(params)
   })
 
 const after_weather = (value) => {
-    console.log(value)
     store.commit('SaveInfo', 
                   { longitude: value.cityInfo.longitude, 
                     latitude: value.cityInfo.latitude,
-                    area: value.cityInfo.c7 })
+                    area: value.cityInfo.c7,
+                    timeArea:  value.cityInfo.c17,
+                    date: value.time.substring(0, 8)})
 }
 </script>
 
@@ -66,13 +71,13 @@ const after_weather = (value) => {
 }
 .night_weather{
     position:absolute;
-    bottom:40px;
+    bottom:60px;
     right:30px;
     font-size: 30px;;
 }
 .night_temperature{
     position:absolute;
-    bottom:15px;
+    bottom:35px;
     right:30px;
     font-size: 20px;;
 }

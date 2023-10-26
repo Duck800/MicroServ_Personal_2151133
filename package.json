@@ -9,6 +9,7 @@
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
+    "less": "^4.2.0",
     "sass": "^1.69.4"
   }
 }

@@ -11,6 +11,9 @@ const store = createStore({
         area:'',
         Lng:116.405725,
         Lat:39.935362,
+        timeArea:'',
+        date:'',
+        cityId:'',
     },
     // 计算属性，获取state里的数据内容
     // 只可读取不可修改
@@ -24,6 +27,11 @@ const store = createStore({
             state.Lng = Info.longitude;
             state.Lat = Info.latitude;
             state.area = Info.area;
+            state.timeArea = Info.timeArea;
+            state.date = Info.date;
+        },
+        SaveId(state,cityId) {
+            state.cityId = cityId;
         }
     },
     // 调用mmutations的操作，异步执行

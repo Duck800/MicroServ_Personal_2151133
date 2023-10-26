@@ -39,10 +39,11 @@ const enterDown = () => {
     };
     GetInfo(params)
         .then(function (result) {
-            console.log(result.showapi_res_body.cityInfo.c7)
             store.commit('SaveInfo', { longitude: result.showapi_res_body.cityInfo.longitude, 
                     latitude: result.showapi_res_body.cityInfo.latitude,
-                    area: result.showapi_res_body.cityInfo.c7 });
+                    area: result.showapi_res_body.cityInfo.c7,
+                    timeArea: result.showapi_res_body.cityInfo.c17,
+                    date: result.time.substring(0, 8) });
     })
     .catch(function (error) {
     console.log(error);
@@ -54,7 +55,6 @@ const enterDown = () => {
 </script>
 
 <style scoped>
-
 .search{
     position:absolute;
     bottom:40%;

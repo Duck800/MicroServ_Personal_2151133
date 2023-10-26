@@ -12,12 +12,6 @@
                  <a :href="news.link">{{ news.title }}</a>
             </div>
         </div>
-        <!-- <div style = "color:rgb(200, 200, 200);">{{ store.state.city }}（ {{ responseData.cityInfo.c2 }} ）</div>
-        <div class = "day_weather"> {{ responseData.f1.day_weather }}</div>
-        <div class = "day_temperature"> {{ responseData.f1.day_air_temperature }}°C</div>
-        <div class = "night_weather"> {{ responseData.f1.night_weather }}</div>
-        <div class = "night_temperature"> {{ responseData.f1.night_air_temperature }}°C</div>
-        <div style="position:absolute;top:100px;right:30px;font-size: 30px;"> ~ </div> -->
     </el-card>
 </template>
  
@@ -41,22 +35,17 @@ axios.get('https://route.showapi.com/170-47?showapi_appid=1503256&showapi_sign=8
   .then(response => {
     // 更新响应式数据
     responseData.value = response.data.showapi_res_body;
-    after_news(responseData.value);
   })
   .catch(error => {
     console.error(error);
   });
-
-const after_news = (value) => {
-    console.log(value.pagebean.contentlist)
-}
 </script>
 
 <style scoped>
 .news{
     background-color: #ffffff;
     width:430px;
-    height:350px;
+    height:355px;
     border-radius: 10px;
     border-color: #00218F;
     color:black;
