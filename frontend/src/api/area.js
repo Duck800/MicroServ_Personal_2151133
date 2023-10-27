@@ -11,7 +11,7 @@ export function GetInfo(params) {
         if (response.status === 200) {
             return response.data;  // 返回 code + msg + data
         } else {
-            Message.error("城市信息获取失败");
+            Message.error("天气信息获取失败");
             return null;
         }
     }).catch(function (error) {
