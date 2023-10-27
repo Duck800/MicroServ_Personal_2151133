@@ -28,7 +28,7 @@ const formData = reactive({
 });
 const store = useStore();
 
-formData.keyword = store.state.city;
+//formData.keyword = store.state.city;
 const enterDown = async() => {
     if (!formData.keyword) {
         Message.error("请输入城市关键词！");
