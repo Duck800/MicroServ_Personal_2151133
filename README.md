@@ -15,11 +15,11 @@ devDependencies：vite^4.4.5
 
 #### 二、页面整体效果
 
-<img src="G:\1.Tongji\Junior\微服务架构\MicroServ_Personal_2151133\frontend\src\assets\Search.png" style="zoom:80%;" />
+<img src="/frontend/src/assets/Search.png" style="zoom:80%;" />
 
-<img src="G:\1.Tongji\Junior\微服务架构\MicroServ_Personal_2151133\frontend\src\assets\Info.png" alt="image-20231027131832867" style="zoom:80%;" />
+<img src="/frontend/src/assets/Info.png" alt="image-20231027131832867" style="zoom:80%;" />
 
-<img src="G:\1.Tongji\Junior\微服务架构\MicroServ_Personal_2151133\frontend\src\assets\Scene.png" alt="image-20231027131939623" style="zoom:80%;" />
+<img src="/frontend/src/assets/Scene.png" alt="image-20231027131939623" style="zoom:80%;" />
 
 #### 三、API使用情况
 
