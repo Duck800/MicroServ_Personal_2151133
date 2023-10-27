@@ -87,7 +87,6 @@ axios.get('https://route.showapi.com/1681-2?showapi_appid=1503256&showapi_sign=8
 }})
   .then(response => {
     responseData.value = response.data.showapi_res_body;
-    console.log(responseData.value)
   })
   .catch(error => {
     console.error(error);

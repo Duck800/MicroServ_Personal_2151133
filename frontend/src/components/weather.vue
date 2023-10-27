@@ -31,20 +31,10 @@ const responseData = ref();
 GetInfo(params)
   .then(function (result) {
     responseData.value = result.showapi_res_body;
-    after_weather(responseData.value);
   })
   .catch(function (error) {
     console.log(error);
   })
-
-const after_weather = (value) => {
-    store.commit('SaveInfo', 
-                  { longitude: value.cityInfo.longitude, 
-                    latitude: value.cityInfo.latitude,
-                    area: value.cityInfo.c7,
-                    timeArea:  value.cityInfo.c17,
-                    date: value.time.substring(0, 8)})
-}
 </script>
 
 <style scoped>

@@ -1,7 +1,7 @@
 <template>
     <div class="search">
         <el-input 
-        placeholder="请输入城市名称" 
+        placeholder="请输入城市关键词"
         v-model="formData.keyword" 
         @keyup.enter="enterDown">
             <template #append>
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import { Search } from '@element-plus/icons-vue'
 import Message from "@/utils/Message.js"
 import { useStore } from 'vuex';
@@ -28,14 +28,16 @@ const formData = reactive({
 });
 const store = useStore();
 
-const enterDown = () => {
+formData.keyword = store.state.city;
+const enterDown = async() => {
     if (!formData.keyword) {
         Message.error("请输入城市关键词！");
         return;
     }
-    store.commit('SaveKeyword', formData.keyword);
+    store.dispatch('updateKeyword', formData.keyword);
+    //console.log(store.state.city)
     const params = {
-        area:store.state.city,
+        area:formData.keyword,
     };
     GetInfo(params)
         .then(function (result) {
@@ -43,14 +45,19 @@ const enterDown = () => {
                     latitude: result.showapi_res_body.cityInfo.latitude,
                     area: result.showapi_res_body.cityInfo.c7,
                     timeArea: result.showapi_res_body.cityInfo.c17,
-                    date: result.time.substring(0, 8) });
-    })
-    .catch(function (error) {
-    console.log(error);
-    })
-    if(router.currentRoute._value.name != 'search')
-        location.reload();
-    router.push({ name: 'info'})
+                    date: result.showapi_res_body.time.substring(0, 8) });
+        })
+        .catch(function (error) {
+           console.log(error);
+        })
+        .finally(function(){
+            if(router.currentRoute._value.name != 'search'){
+                location.reload();
+            }
+            else{
+                router.push({ name: 'info'})
+            }
+        })
 }
 </script>
 

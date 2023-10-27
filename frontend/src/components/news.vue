@@ -18,7 +18,6 @@
 <script setup>
 import axios from 'axios';
 import { reactive, ref } from 'vue';
-import 'vue3-emoji/dist/style.css'
 import { useStore } from 'vuex';
 
 const store = useStore();
@@ -27,6 +26,7 @@ const params = {
    page: 1,
 };
 const responseData = ref();
+console.log(store.state.area)
 
 // 获取地区新闻
 axios.get('https://route.showapi.com/170-47?showapi_appid=1503256&showapi_sign=826a61cff95b4ffc89b1ef1ee2b0d63a', {

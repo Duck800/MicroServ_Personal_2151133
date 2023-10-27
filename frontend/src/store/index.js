@@ -36,9 +36,10 @@ const store = createStore({
     },
     // 调用mmutations的操作，异步执行
     actions: {
-        // increment({ commit }, person_info) {
-        // commit('UpdateInfo', person_info);
-        // }
+        updateKeyword({ commit }, keyword) {
+            commit('SaveKeyword', keyword);
+            localStorage.setItem('keyword', keyword);
+          }
     },
     // state信息过长时，用以进行分割
     modules: {}
